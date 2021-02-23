@@ -17,7 +17,7 @@ function getAPI(){
     .then(res => res.json()) // parse response as JSON
     .then(data => {
 			console.log(data)
-			document.querySelector('h2').innerText = data.results[0].name
+			document.querySelector('h2').innerText = data.results[Math.floor(Math.random() * 20)].name
     })
     .catch(err => {
         console.log(`error ${err}`)
