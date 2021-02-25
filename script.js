@@ -17,11 +17,38 @@ function getAPI(){
     .then(res => res.json()) // parse response as JSON
     .then(data => {
 			console.log(data)
-			document.querySelector('h2').innerText = data.results[Math.floor(Math.random() * 20)].name
+            for (let i = 0; i < data.results.length; i++) {
+                document.querySelector('h2').textContent += `${data.results[i].name}   `
+            }
     })
     .catch(err => {
         console.log(`error ${err}`)
     });
 	}
 
+    let next = 1
+
+function nextPage(){
+    next += 1
+    console.log(next)
+    let url = "https://rawg.io/api/games?page=" + next
+	fetch(url)
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+			console.log(data)
+            for (let i = 0; i < data.results.length; i++) {
+                document.querySelector('h2').textContent += `${data.results[i].name}   `
+            }
+    })
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+function clearH2(){
+    window.location.reload()
+}
+
 document.querySelector('.search-btn').addEventListener('click', getAPI)
+document.querySelector('.next-page-btn').addEventListener('click', nextPage)
+document.querySelector('.clear-btn').addEventListener('click', clearH2)
