@@ -12,10 +12,15 @@
 // 	console.error(err);
 // });
 
+let pages = 1
+
 function getAPI(){
 	fetch("https://rawg.io/api/games")
     .then(res => res.json()) // parse response as JSON
     .then(data => {
+        if (pages < 1) {
+            pages = 1
+        }
 			console.log(data)
             if (document.querySelector('h2').textContent !== "") {
                 document.querySelector('h2').textContent = ""
@@ -29,7 +34,7 @@ function getAPI(){
     });
 	}
 
-    let pages = 1
+
     
 
 function nextPage(){
@@ -55,8 +60,8 @@ function nextPage(){
 function prevPage(){
     pages -= 1
     console.log(pages)
-    if (pages < 0) {
-        document.querySelector('h2').textContent = ""
+    if (pages < 1) {
+        pages = 1
     }
     let url = "https://rawg.io/api/games?page=" + pages
 	fetch(url)
