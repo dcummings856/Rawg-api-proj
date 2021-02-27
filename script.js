@@ -17,6 +17,9 @@ function getAPI(){
     .then(res => res.json()) // parse response as JSON
     .then(data => {
 			console.log(data)
+            if (document.querySelector('h2').textContent !== "") {
+                document.querySelector('h2').textContent = ""
+            }
             for (let i = 0; i < data.results.length; i++) {
                 document.querySelector('h2').textContent += `${data.results[i].name}   `
             }
@@ -26,16 +29,43 @@ function getAPI(){
     });
 	}
 
-    let next = 1
+    let pages = 1
+    
 
 function nextPage(){
-    next += 1
-    console.log(next)
-    let url = "https://rawg.io/api/games?page=" + next
+    pages += 1
+    console.log(pages)
+    let url = "https://rawg.io/api/games?page=" + pages
 	fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
 			console.log(data)
+            if (document.querySelector('h2').textContent !== "") {
+                document.querySelector('h2').textContent = ""
+            }
+            for (let i = 0; i < data.results.length; i++) {
+                document.querySelector('h2').textContent += `${data.results[i].name}   `
+            }
+    })
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+function prevPage(){
+    pages -= 1
+    console.log(pages)
+    if (pages < 0) {
+        document.querySelector('h2').textContent = ""
+    }
+    let url = "https://rawg.io/api/games?page=" + pages
+	fetch(url)
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+			console.log(data)
+            if (document.querySelector('h2').textContent !== "") {
+                document.querySelector('h2').textContent = ""
+            }
             for (let i = 0; i < data.results.length; i++) {
                 document.querySelector('h2').textContent += `${data.results[i].name}   `
             }
@@ -50,5 +80,6 @@ function clearH2(){
 }
 
 document.querySelector('.search-btn').addEventListener('click', getAPI)
+document.querySelector('.prev-page-btn').addEventListener('click', prevPage)
 document.querySelector('.next-page-btn').addEventListener('click', nextPage)
 document.querySelector('.clear-btn').addEventListener('click', clearH2)
