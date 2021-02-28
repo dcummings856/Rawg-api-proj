@@ -30,6 +30,7 @@ function getAPI(){
             // }
             data.results.forEach(obj => {
                 const li = document.createElement('li')
+                if (obj.name.includes)
                 li.textContent = obj.name
                 document.querySelector('ul').appendChild(li)
             })
@@ -104,3 +105,24 @@ document.querySelector('.search-btn').addEventListener('click', getAPI)
 document.querySelector('.prev-page-btn').addEventListener('click', prevPage)
 document.querySelector('.next-page-btn').addEventListener('click', nextPage)
 document.querySelector('.clear-btn').addEventListener('click', clearH2)
+document.querySelector('.submit-btn').addEventListener('click', searchAPI)
+
+let input = document.querySelector('input')
+function searchAPI(){
+fetch("https://rawg.io/api/games")
+.then(res => res.json()) // parse response as JSON
+.then(data => {
+    for (let i = 0; i < data.results.length; i++) {
+    if (data.results[i].slug.includes(input.value)){
+        console.log(data.results[i].name)
+        const li = document.createElement('li')
+        li.textContent = data.results[i].name
+        document.querySelector('ul').appendChild(li)
+    }
+    
+}
+        })
+.catch(err => {
+    console.log(`error ${err}`)
+});
+}
