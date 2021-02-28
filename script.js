@@ -22,12 +22,17 @@ function getAPI(){
             pages = 1
         }
 			console.log(data)
-            if (document.querySelector('h2').textContent !== "") {
-                document.querySelector('h2').textContent = ""
+            if (document.querySelector('ul').textContent !== "") {
+                document.querySelector('ul').textContent = ""
             }
-            for (let i = 0; i < data.results.length; i++) {
-                document.querySelector('h2').textContent += `${data.results[i].name}   `
-            }
+            // for (let i = 0; i < data.results.length; i++) {
+            //     document.querySelector('h2').textContent += `${data.results[i].name}   `
+            // }
+            data.results.forEach(obj => {
+                const li = document.createElement('li')
+                li.textContent = obj.name
+                document.querySelector('ul').appendChild(li)
+            })
     })
     .catch(err => {
         console.log(`error ${err}`)
@@ -45,12 +50,17 @@ function nextPage(){
     .then(res => res.json()) // parse response as JSON
     .then(data => {
 			console.log(data)
-            if (document.querySelector('h2').textContent !== "") {
-                document.querySelector('h2').textContent = ""
+            if (document.querySelector('ul').textContent !== "") {
+                document.querySelector('ul').textContent = ""
             }
-            for (let i = 0; i < data.results.length; i++) {
-                document.querySelector('h2').textContent += `${data.results[i].name}   `
-            }
+            // for (let i = 0; i < data.results.length; i++) {
+            //     document.querySelector('h2').textContent += `${data.results[i].name}   `
+            // }
+            data.results.forEach(obj => {
+                const li = document.createElement('li')
+                li.textContent = obj.name
+                document.querySelector('ul').appendChild(li)
+            })
     })
     .catch(err => {
         console.log(`error ${err}`)
@@ -68,12 +78,18 @@ function prevPage(){
     .then(res => res.json()) // parse response as JSON
     .then(data => {
 			console.log(data)
-            if (document.querySelector('h2').textContent !== "") {
-                document.querySelector('h2').textContent = ""
+            if (document.querySelector('ul').textContent !== "") {
+                document.querySelector('ul').textContent = ""
             }
-            for (let i = 0; i < data.results.length; i++) {
-                document.querySelector('h2').textContent += `${data.results[i].name}   `
-            }
+            // for (let i = 0; i < data.results.length; i++) {
+            //     document.querySelector('h2').textContent += `${data.results[i].name}   `
+            // }
+            data.results.forEach(obj => {
+                const li = document.createElement('li')
+                li.textContent = obj.name
+                document.querySelector('ul').appendChild(li)
+            })
+            
     })
     .catch(err => {
         console.log(`error ${err}`)
