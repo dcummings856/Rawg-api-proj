@@ -25,9 +25,7 @@ function getAPI(){
             if (document.querySelector('ul').textContent !== "") {
                 document.querySelector('ul').textContent = ""
             }
-            // for (let i = 0; i < data.results.length; i++) {
-            //     document.querySelector('h2').textContent += `${data.results[i].name}   `
-            // }
+
             data.results.forEach(obj => {
                 const li = document.createElement('li')
                 if (obj.name.includes)
@@ -54,9 +52,7 @@ function nextPage(){
             if (document.querySelector('ul').textContent !== "") {
                 document.querySelector('ul').textContent = ""
             }
-            // for (let i = 0; i < data.results.length; i++) {
-            //     document.querySelector('h2').textContent += `${data.results[i].name}   `
-            // }
+
             data.results.forEach(obj => {
                 const li = document.createElement('li')
                 li.textContent = obj.name
@@ -82,9 +78,7 @@ function prevPage(){
             if (document.querySelector('ul').textContent !== "") {
                 document.querySelector('ul').textContent = ""
             }
-            // for (let i = 0; i < data.results.length; i++) {
-            //     document.querySelector('h2').textContent += `${data.results[i].name}   `
-            // }
+
             data.results.forEach(obj => {
                 const li = document.createElement('li')
                 li.textContent = obj.name
@@ -110,18 +104,17 @@ document.querySelector('.submit-btn').addEventListener('click', searchAPI)
 let input = document.querySelector('input')
 function searchAPI(){
 fetch("https://rawg.io/api/games")
-.then(res => res.json()) // parse response as JSON
+.then(res => res.json())
 .then(data => {
     for (let i = 0; i < data.results.length; i++) {
-    if (data.results[i].slug.includes(input.value)){
-        console.log(data.results[i].name)
-        const li = document.createElement('li')
-        li.textContent = data.results[i].name
-        document.querySelector('ul').appendChild(li)
+        if (data.results[i].slug.includes(input.value)){
+            console.log(data.results[i].name)
+            const li = document.createElement('li')
+            li.textContent = data.results[i].name
+            document.querySelector('ul').appendChild(li)
+        }
     }
-    
-}
-        })
+})
 .catch(err => {
     console.log(`error ${err}`)
 });
