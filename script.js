@@ -52,12 +52,14 @@ function nextPage(){
             if (document.querySelector('ul').textContent !== "") {
                 document.querySelector('ul').textContent = ""
             }
-
-            data.results.forEach(obj => {
-                const li = document.createElement('li')
-                li.textContent = obj.name
-                document.querySelector('ul').appendChild(li)
-            })
+            for (let i = 0; i < data.results.length; i++) {
+                if (data.results[i].slug.includes(input.value)){
+                    console.log(data.results[i].name)
+                    const li = document.createElement('li')
+                    li.textContent = data.results[i].name
+                    document.querySelector('ul').appendChild(li)
+                }
+            }
     })
     .catch(err => {
         console.log(`error ${err}`)
@@ -78,12 +80,14 @@ function prevPage(){
             if (document.querySelector('ul').textContent !== "") {
                 document.querySelector('ul').textContent = ""
             }
-
-            data.results.forEach(obj => {
-                const li = document.createElement('li')
-                li.textContent = obj.name
-                document.querySelector('ul').appendChild(li)
-            })
+            for (let i = 0; i < data.results.length; i++) {
+                if (data.results[i].slug.includes(input.value)){
+                    console.log(data.results[i].name)
+                    const li = document.createElement('li')
+                    li.textContent = data.results[i].name
+                    document.querySelector('ul').appendChild(li)
+                }
+            }
             
     })
     .catch(err => {
