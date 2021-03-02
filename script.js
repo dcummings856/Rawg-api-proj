@@ -25,7 +25,7 @@ fetch("https://rawg.io/api/games")
 .then(data => {
     pages = 1
     console.log(data)
-    for (let i = 0; i < data.results.length; i++) {
+    for (let i = 0; i < 40; i++) {
         pages += 1
         console.log(pages)
         let url = "https://rawg.io/api/games?page=" + pages
