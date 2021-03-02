@@ -14,33 +14,6 @@
 
 let pages = 1
 
-function getAPI(){
-	fetch("https://rawg.io/api/games")
-    .then(res => res.json()) // parse response as JSON
-    .then(data => {
-        if (pages < 1) {
-            pages = 1
-        }
-			console.log(data)
-            if (document.querySelector('ul').textContent !== "") {
-                document.querySelector('ul').textContent = ""
-            }
-
-            data.results.forEach(obj => {
-                const li = document.createElement('li')
-                if (obj.name.includes)
-                li.textContent = obj.name
-                document.querySelector('ul').appendChild(li)
-            })
-    })
-    .catch(err => {
-        console.log(`error ${err}`)
-    });
-	}
-
-
-    
-
 function nextPage(){
     pages += 1
     console.log(pages)
@@ -99,7 +72,6 @@ function clearH2(){
     window.location.reload()
 }
 
-document.querySelector('.search-btn').addEventListener('click', getAPI)
 document.querySelector('.prev-page-btn').addEventListener('click', prevPage)
 document.querySelector('.next-page-btn').addEventListener('click', nextPage)
 document.querySelector('.clear-btn').addEventListener('click', clearH2)
@@ -110,6 +82,8 @@ function searchAPI(){
 fetch("https://rawg.io/api/games")
 .then(res => res.json())
 .then(data => {
+    pages = 1
+    console.log(data)
     for (let i = 0; i < data.results.length; i++) {
         if (data.results[i].slug.includes(input.value)){
             console.log(data.results[i].name)
