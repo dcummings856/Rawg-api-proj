@@ -15,6 +15,7 @@ body {
 
 .ul-container {
   display: flex;
+  font-family: 'Lato', sans-serif;
 }
 
 ul li {
