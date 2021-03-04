@@ -33,7 +33,6 @@ fetch("https://rawg.io/api/games")
         .then(res => res.json()) // parse response as JSON
         .then(data => {
                 console.log(data)
-
                 for (let j = 0; j < data.results.length; j++) {
                     if (data.results[j].slug.includes(input.value)){
                         console.log(data.results[j])
