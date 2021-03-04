@@ -1,0 +1,22 @@
+body {
+  background: black;
+}
+
+.LFG-header {
+  font-family: 'Abel', sans-serif;
+  color: bisque;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.ul-container {
+  display: flex;
+}
+
+ul li {
+  color: bisque;
+}
