@@ -36,7 +36,7 @@ fetch("https://rawg.io/api/games")
 
                 for (let j = 0; j < data.results.length; j++) {
                     if (data.results[j].slug.includes(input.value)){
-                        console.log(data.results[j].name)
+                        console.log(data.results[j])
                         const li1 = document.createElement('li')
                         li1.textContent = data.results[j].name
                         document.querySelector('ul').appendChild(li1)
