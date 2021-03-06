@@ -28,4 +28,9 @@ ul li {
 
 li {
   list-style-type: none;
+  cursor: pointer;
+}
+
+li:hover {
+  color: rgb(204, 186, 165);
 }
