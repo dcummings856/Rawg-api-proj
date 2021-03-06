@@ -25,3 +25,7 @@ button {
 ul li {
   color: bisque;
 }
+
+li {
+  list-style-type: none;
+}
