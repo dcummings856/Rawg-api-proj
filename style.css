@@ -20,6 +20,8 @@ button {
 .ul-container {
   display: flex;
   font-family: 'Lato', sans-serif;
+  background: rgba(85, 85, 85, 0.356);
+  margin-top: 15px;
 }
 
 ul li {
