@@ -18,7 +18,7 @@ button {
 }
 
 .ul-container {
-  display: flex;
+  display: none;
   font-family: 'Lato', sans-serif;
   background: rgba(85, 85, 85, 0.356);
   margin-top: 15px;
